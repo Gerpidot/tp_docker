@@ -1,21 +1,29 @@
 const express = require("express");
+const path = require("path");
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware para parsear JSON
+// Middleware para JSON
 app.use(express.json());
 
-// Ruta de prueba
-app.get("/", (req, res) => {
-  res.send("🚀 Hola Mundo! Tambien podès acceder a la api con la ruta /api/hello y recibir el mensaje desde la api");
-});
+// Servir archivos estáticos (html, css, js) desde /public
+app.use(express.static(path.join(__dirname, "public")));
 
-// Ejemplo de API REST
+// API endpoints
 app.get("/api/hello", (req, res) => {
   res.json({ message: "Hola desde la API!" });
 });
 
+app.get("/api/status", (req, res) => {
+  res.json({
+    status: "ok",
+    uptime: process.uptime().toFixed(0) + "s",
+    timestamp: new Date().toISOString(),
+  });
+});
+
 // Arrancar servidor
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
 });
