@@ -1,0 +1,15 @@
+{
+  "name": "tp_docker",
+  "version": "1.0.0",
+  "description": "Trabajo Practico Docker, Computaciòn en la Nube",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
